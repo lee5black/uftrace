@@ -169,6 +169,7 @@ print_feature "libdw" "have_libdw" "DWARF debug info support"
 print_feature "libpython2.7" "have_libpython2.7" "python scripting support"
 print_feature "libncursesw" "have_libncurses" "TUI support"
 print_feature "cxa_demangle" "cxa_demangle" "full demangler support with libstdc++"
+print_feature "perf_event" "perf_clockid" "perf (PMU) event support"
 
 cat >$output <<EOF
 # this file is generated automatically
