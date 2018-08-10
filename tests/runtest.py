@@ -378,6 +378,7 @@ class TestBase:
 
         if result_expect != result_tested:
             result_expect = self.sort(self.fixup(cflags, self.result))
+            result_tested = self.sort(self.fixup(cflags, result_origin))
             ret = TestBase.TEST_SUCCESS_FIXED
 
         if result_expect != result_tested:
