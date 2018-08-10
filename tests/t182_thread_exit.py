@@ -15,6 +15,7 @@ class TestCase(TestBase):
             [26832] |   pthread_create() {
   32.395 us [26832] |   } /* pthread_create */
             [26832] |   pthread_join() {
+            [26832] |     /* linux:sched-out */
             [26836] | thread_main() {
             [26836] |   printf() {
   17.092 us [26836] |   } /* printf */
@@ -25,6 +26,7 @@ class TestCase(TestBase):
    5.480 us [26837] |   } /* printf */
             [26837] |   pthread_exit() {
             [26837] |     /* linux:task-exit */
+ 341.128 us [26832] |     /* linux:sched-in */
  362.442 us [26832] |   } /* pthread_join */
             [26832] |   pthread_join() {
    1.000 us [26832] |   } /* pthread_join */
@@ -33,3 +35,6 @@ class TestCase(TestBase):
 
     def runcmd(self):
         return '%s --no-merge %s' % (TestBase.uftrace_cmd, 't-' + self.name)
+
+    def fixup(self, cflags, result):
+        return re.sub('.*linux:sched.*\n', '', result)

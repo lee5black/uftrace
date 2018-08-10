@@ -17,6 +17,7 @@ class TestCase(TestBase):
             [ 1429] |   pthread_create() {
   20.720 us [ 1429] |   } /* pthread_create */
             [ 1429] |   pthread_join() {
+            [ 1429] |     /* linux:sched-out */
             [ 1430] | foo() {
             [ 1430] |   a() {
             [ 1430] |     b() {
@@ -25,8 +26,10 @@ class TestCase(TestBase):
    3.793 us [ 1430] |     } /* b */
    4.620 us [ 1430] |   } /* a */
   96.966 us [ 1430] | } /* foo */
+            [ 1429] |     /* linux:sched-in */
  340.217 us [ 1429] |   } /* pthread_join */
             [ 1429] |   pthread_join() {
+            [ 1429] |     /* linux:sched-out */
             [ 1431] | foo() {
             [ 1431] |   a() {
             [ 1431] |     b() {
@@ -35,8 +38,10 @@ class TestCase(TestBase):
    1.333 us [ 1431] |     } /* b */
    2.186 us [ 1431] |   } /* a */
   63.205 us [ 1431] | } /* foo */
+            [ 1429] |     /* linux:sched-in */
  100.046 us [ 1429] |   } /* pthread_join */
             [ 1429] |   pthread_join() {
+            [ 1429] |     /* linux:sched-out */
             [ 1432] | foo() {
             [ 1432] |   a() {
             [ 1432] |     b() {
@@ -45,8 +50,10 @@ class TestCase(TestBase):
    1.210 us [ 1432] |     } /* b */
    2.134 us [ 1432] |   } /* a */
  169.879 us [ 1432] | } /* foo */
+            [ 1429] |     /* linux:sched-in */
   27.470 us [ 1429] |   } /* pthread_join */
             [ 1429] |   pthread_join() {
+            [ 1429] |     /* linux:sched-out */
             [ 1433] | foo() {
             [ 1433] |   a() {
             [ 1433] |     b() {
@@ -55,9 +62,13 @@ class TestCase(TestBase):
    1.717 us [ 1433] |     } /* b */
    2.860 us [ 1433] |   } /* a */
  121.139 us [ 1433] | } /* foo */
+            [ 1429] |     /* linux:sched-in */
    0.390 us [ 1429] |   } /* pthread_join */
  658.759 us [ 1429] | } /* main */
 """)
 
     def runcmd(self):
         return '%s --no-merge %s' % (TestBase.uftrace_cmd, 't-' + self.name)
+
+    def fixup(self, cflags, result):
+        return re.sub('.*linux:sched.*\n', '', result)

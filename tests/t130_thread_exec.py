@@ -12,6 +12,7 @@ class TestCase(TestBase):
             [23292] |   execl() {
             [23290] |   /* linux:task-exit */
             [23290] |   /* linux:task-name (name=t-abc) */
+ 324.381 us [23290] |   /* linux:schedule */
             [23290] |   main() {
             [23290] |     a() {
             [23290] |       b() {
@@ -36,3 +37,7 @@ task: 23290
 
     def runcmd(self):
         return '%s -N ^__ %s' % (TestBase.uftrace_cmd, 't-' + self.name)
+
+    def fixup(self, cflags, result):
+        import re
+        return re.sub('.*linux:.*\n', '', result)

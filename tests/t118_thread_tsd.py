@@ -14,10 +14,12 @@ class TestCase(TestBase):
    0.828 us [ 3336] |   pthread_setspecific();
   39.549 us [ 3336] |   pthread_create();
             [ 3336] |   pthread_join() {
+            [ 3336] |     /* linux:sched-out */
             [ 3346] | thread() {
    0.804 us [ 3346] |   malloc();
    0.128 us [ 3346] |   pthread_setspecific();
    2.708 us [ 3346] | } /* thread */
+ 102.134 us [ 3336] |     /* linux:sched-in */
  149.452 us [ 3336] |   } /* pthread_join */
    1.684 us [ 3336] |   pthread_getspecific();
    0.549 us [ 3336] |   tsd_dtor();
@@ -29,6 +31,8 @@ class TestCase(TestBase):
         return '%s %s' % (TestBase.uftrace_cmd, 't-' + self.name)
 
     def fixup(self, cflags, result):
+        import re
+        result = re.sub('.*linux:sched.*\n', '', result)
         return result.replace('tsd_dtor();', """tsd_dtor() {
    0.347 us [ 3336] |     free();
    0.549 us [ 3336] |   } /* tsd_dtor */""")
