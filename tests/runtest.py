@@ -205,6 +205,8 @@ class TestBase:
             try:
                 if line[5].startswith('__'):
                     continue
+                if line[5].startswith('linux:'):
+                    continue
             except:
                 pass
             result.append('%s %s' % (line[4], line[5]))
@@ -260,6 +262,9 @@ class TestBase:
                 # ignore __monstartup and __cxa_atexit
                 if m.group('func').startswith('__'):
                     continue
+                # ignore scheduler events
+                if m.group('func').startswith('linux:'):
+                    continue
                 result.append(patt.sub(r'\g<type> \g<depth> \g<func>', ln))
 
         return '\n'.join(result)
@@ -278,6 +283,8 @@ class TestBase:
             return ''
         for ln in o['traceEvents']:
             if ln['name'].startswith('__'):
+                continue
+            if ln['name'] == "linux:schedule":
                 continue
             if ln['ph'] == "M" and ln['name'] == "process_name":
                 result.append("%s %s %s" % (ln['ph'], ln['name'], ln['args']))
@@ -307,7 +314,8 @@ class TestBase:
         """This function is called when result is different to expected.
            But if we know some known difference on some optimization level,
            apply it and re-test with the modified result."""
-        return result
+        # ignore scheduler events which are enabled by default
+        return re.sub('.*linux:sched.*\n', '', result)
 
     def check_dependency(self, item):
         import os.path
