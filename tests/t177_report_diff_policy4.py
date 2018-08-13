@@ -19,8 +19,9 @@ class TestCase(TestBase):
     +0.027 us     +0.027 us            +0   atoi
   +158.853 us     +1.319 us            +0   bar
     +1.235 ms     +2.749 us            +0   foo
+    +1.298 ms     +1.298 ms            +3   linux:schedule
     +1.305 ms     +0.319 us            +0   main
-    +1.300 ms     +1.300 ms            +3   usleep
+    +1.300 ms     +2.379 us            +3   usleep
 """)
 
     def pre(self):
@@ -55,6 +56,8 @@ class TestCase(TestBase):
             # [0]  [1]  [2]  [3]  [4]    [5]
             # tT   unit tS   unit call   function
             if line[-1].startswith('__'):
+                continue
+            if line[-1] == 'linux:schedule':
                 continue
             result.append('%s %s' % (line[-2], line[-1]))
 

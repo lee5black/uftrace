@@ -56,6 +56,8 @@ class TestCase(TestBase):
             # tT/0 unit tT/1 unit percent  tS/0 unit tS/1 unit percent  call/0 call/1 call/diff  function
             if line[-1].startswith('__'):
                 continue
+            if line[-1] == 'linux:schedule':
+                continue
             result.append('%s %s %s %s' % (line[-4], line[-3], line[-2], line[-1]))
 
         return '\n'.join(result)

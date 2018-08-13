@@ -11,7 +11,8 @@ class TestCase(TestBase):
   Total time   Self time       Calls  Function
   ==========  ==========  ==========  ====================================
   849.948 us   20.543 us           2  main
-  691.873 us  691.873 us           1  wait
+  691.873 us    3.027 us           1  wait
+  682.331 us  682.331 us           1  linux:schedule
   130.930 us  130.930 us           2  fork
    10.942 us    0.880 us           2  a
    10.062 us    0.756 us           2  b

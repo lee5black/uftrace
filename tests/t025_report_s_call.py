@@ -12,10 +12,11 @@ class TestCase(TestBase):
   ==========  ==========  ==========  ====================================
    36.388 us   36.388 us           6  loop
    37.525 us    1.137 us           2  foo
-    1.078 ms    1.078 ms           1  usleep
+    1.076 ms    1.076 ms           1  linux:schedule
     1.152 ms   71.683 us           1  main
    70.176 us   70.176 us           1  __monstartup   # ignore this
     1.080 ms    1.813 us           1  bar
+    1.078 ms    1.692 us           1  usleep
     1.200 us    1.200 us           1  __cxa_atexit   # and this too
 """, sort='report')
 

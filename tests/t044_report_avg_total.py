@@ -13,6 +13,7 @@ class TestCase(TestBase):
     1.152 ms    1.152 ms    1.152 ms  main
     1.080 ms    1.080 ms    1.080 ms  bar
     1.078 ms    1.078 ms    1.078 ms  usleep
+    1.076 ms    1.076 ms    1.076 ms  linux:schedule
    70.176 us   70.176 us   70.176 us  __monstartup   # ignore this
     3.665 us    2.976 us    4.354 us  foo
     1.051 us    0.868 us    1.912 us  loop

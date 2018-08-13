@@ -19,6 +19,7 @@ class TestCase(TestBase):
       -5.40%       -5.40%           +0   atoi
     +999.99%     +875.84%           +0   bar
     +999.99%     +498.85%           +0   foo
+    +999.99%     +999.99%           +3   linux:schedule
     +999.99%      +10.47%           +0   main
     +999.99%     +999.99%           +3   usleep
 """)
@@ -55,6 +56,8 @@ class TestCase(TestBase):
             # [0]   [1]      [2]  [3]      [4]   [5]
             # total percent  self percent  call  function
             if line[-1].startswith('__'):
+                continue
+            if line[-1] == 'linux:schedule':
                 continue
             result.append('%s %s' % (line[-2], line[-1]))
 

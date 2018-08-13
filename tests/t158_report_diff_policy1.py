@@ -17,7 +17,8 @@ class TestCase(TestBase):
     Total time    Self time        Calls   Function
   ============   ==========   ==========   ====================
      +1.296 ms    +0.312 us           +0   main
-     +1.292 ms    +1.292 ms           +3   usleep
+     +1.292 ms    +8.132 us           +3   usleep
+     +1.284 ms    +1.284 ms           +3   linux:schedule
      +1.225 ms    +2.609 us           +0   foo
    +158.450 us    +1.305 us           +0   bar
      -0.066 us    -0.066 us           +0   atoi
@@ -55,6 +56,8 @@ class TestCase(TestBase):
             # [0]  [1]    [2]  [3]   [4]   [5]
             # total unit  self unit  call  function
             if line[-1].startswith('__'):
+                continue
+            if line[-1] == 'linux:schedule':
                 continue
             result.append('%s %s' % (line[-2], line[-1]))
 

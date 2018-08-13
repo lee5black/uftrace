@@ -10,10 +10,11 @@ class TestCase(TestBase):
         TestBase.__init__(self, 'sort', """
     Avg self    Min self    Max self  Function
   ==========  ==========  ==========  ====================================
-    1.078 ms    1.078 ms    1.078 ms  usleep
+    1.076 ms    1.076 ms    1.076 ms  linux:schedule
    71.683 us   71.683 us   71.683 us  main
    70.176 us   70.176 us   70.176 us  __monstartup   # ignore this
     1.813 us    1.813 us    1.813 us  bar
+    1.783 us    1.783 us    1.783 us  usleep
     1.051 us    0.868 us    1.912 us  loop
     1.002 us    1.002 us    1.002 us  __cxa_atexit   # and this too
     0.509 us    0.359 us    0.660 us  foo
@@ -47,6 +48,8 @@ class TestCase(TestBase):
             # [0]       [1]   [2]       [3]   [4]       [5]   [6]
             # avg_self  unit  min_self  unit  max_self  unit  function
             if line[6].startswith('__'):
+                continue
+            if line[-1] == 'linux:schedule':
                 continue
             result.append(line[6])
 
