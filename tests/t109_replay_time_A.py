@@ -12,7 +12,9 @@ class TestCase(TestBase):
             [32537] | main(1) {
             [32537] |   foo() {
             [32537] |     bar() {
-   2.080 ms [32537] |       usleep(2000);
+            [32537] |       usleep(2000) {
+   2.077 ms [32537] |         /* linux:schedule */
+   2.080 ms [32537] |       } /* usleep */
    2.084 ms [32537] |     } /* bar */
    2.102 ms [32537] |   } /* foo */
    2.103 ms [32537] | } /* main */

@@ -9,7 +9,9 @@ class TestCase(TestBase):
 # DURATION    TID     FUNCTION
             [18270] | main() {
             [18270] |   foo() {
-   2.071 ms [18270] |     bar();
+            [18270] |     bar() {
+   2.070 ms [18270] |       /* linux:schedule */
+   2.071 ms [18270] |     } /* bar */
    2.082 ms [18270] |   } /* foo */
    2.083 ms [18270] | } /* main */
 """)

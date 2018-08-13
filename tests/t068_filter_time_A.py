@@ -9,7 +9,9 @@ class TestCase(TestBase):
             [23157] | main() {
             [23157] |   foo() {
             [23157] |     bar() {
-   2.093 ms [23157] |       usleep(2000);
+            [23157] |       usleep(2000) {
+   2.088 ms [23157] |         /* linux:schedule */
+   2.093 ms [23157] |       } /* usleep */
    2.095 ms [23157] |     } /* bar */
    2.106 ms [23157] |   } /* foo */
    2.107 ms [23157] | } /* main */

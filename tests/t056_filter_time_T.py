@@ -8,7 +8,9 @@ class TestCase(TestBase):
         TestBase.__init__(self, 'sleep', result="""
 # DURATION    TID     FUNCTION
             [18260] | main() {
-   2.088 ms [18260] |   foo();
+            [18260] |   foo() {
+   2.081 ms [18260] |     /* linux:schedule */
+   2.088 ms [18260] |   } /* foo */
    2.090 ms [18260] | } /* main */
 """)
 

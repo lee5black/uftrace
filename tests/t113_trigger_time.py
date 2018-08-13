@@ -12,7 +12,9 @@ class TestCase(TestBase):
    1.675 us [16873] |       malloc();
    6.867 us [16873] |     } /* mem_alloc */
             [16873] |     bar() {
-   2.068 ms [16873] |       usleep();
+            [16873] |       usleep() {
+   2.064 ms [16873] |         /* linux:schedule */
+   2.068 ms [16873] |       } /* usleep */
    2.071 ms [16873] |     } /* bar */
    2.085 ms [16873] |   } /* foo */
    2.086 ms [16873] | } /* main */

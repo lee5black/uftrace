@@ -7,7 +7,9 @@ class TestCase(TestBase):
         TestBase.__init__(self, 'sleep', result="""
 # DURATION    TID     FUNCTION
             [18229] | bar() {
-   2.078 ms [18229] |   usleep();
+            [18229] |   usleep() {
+   2.041 ms [18229] |     /* linux:schedule */
+   2.073 ms [18229] |   } /* usleep */
    2.080 ms [18229] | } /* bar */
 """, sort='simple')
 
