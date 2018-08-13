@@ -12,6 +12,7 @@ class TestCase(TestBase):
             [26125] |   fork() {
  101.456 us [26125] |   } /* fork */
             [26125] |   wait() {
+            [26125] |     /* linux:sched-out */
  298.356 us [26126] |   } /* fork */
             [26126] |   a() {
             [26126] |     b() {
@@ -22,6 +23,7 @@ class TestCase(TestBase):
    2.531 us [26126] |     } /* b */
    3.151 us [26126] |   } /* a */
  333.039 us [26126] | } /* main */
+  15.934 us [26125] |     /* linux:sched-in */
   19.376 us [26125] |   } /* wait */
             [26125] |   a() {
             [26125] |     b() {

@@ -25,6 +25,7 @@ class TestCase(TestBase):
  127.172 us :  +-(1) fork
             :  | 
    3.527 ms :  +-(1) waitpid
+   3.524 ms :  | (1) linux:schedule
             :  | 
             :  +-(1) execl
 """, sort='graph')

@@ -19,6 +19,7 @@ class TestCase(TestBase):
    2.109 ms : (1) foo
    2.098 ms : (1) bar
    2.096 ms : (1) usleep
+   2.092 ms : (1) linux:schedule
 """, sort='graph')
 
     def pre(self):

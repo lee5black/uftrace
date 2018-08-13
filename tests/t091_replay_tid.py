@@ -11,7 +11,9 @@ class TestCase(TestBase):
 # DURATION    TID     FUNCTION
             [ 1661] | main() {
  130.930 us [ 1661] |   fork();
- 691.873 us [ 1661] |   wait();
+            [ 1661] |   wait() {
+ 673.138 us [ 1661] |     /* linux:schedule */
+ 691.873 us [ 1661] |   } /* wait */
             [ 1661] |   a() {
             [ 1661] |     b() {
             [ 1661] |       c() {
@@ -44,3 +46,8 @@ class TestCase(TestBase):
     def post(self, ret):
         sp.call(['rm', '-rf', TDIR])
         return ret
+
+    def fixup(self, cflags, result):
+        return result.replace("""wait() {
+ 673.138 us [ 1661] |     /* linux:schedule */
+ 691.873 us [ 1661] |   } /* wait */""", "wait();")

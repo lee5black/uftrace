@@ -12,10 +12,12 @@ class TestCase(TestBase):
    1.246 us [ 5078] |   pthread_setspecific();
   55.151 us [ 5078] |   pthread_create();
             [ 5078] |   pthread_join() {
+            [ 5078] |     /* linux:sched-out */
             [ 5082] | thread() {
    0.803 us [ 5082] |   malloc();
    0.449 us [ 5082] |   pthread_setspecific();
    3.608 us [ 5082] | } /* thread */
+ 204.929 us [ 5078] |     /* linux:sched-in */
  207.839 us [ 5078] |   } /* pthread_join */
    2.997 us [ 5078] |   pthread_getspecific();
             [ 5078] |   tsd_dtor() {

@@ -31,6 +31,7 @@ class TestCase(TestBase):
  127.172 us :  +-(1) fork
             :  | 
    3.527 ms :  +-(1) waitpid
+   3.525 ms :    (1) linux:schedule
 """)
 
     def pre(self):
@@ -44,11 +45,6 @@ class TestCase(TestBase):
     def post(self, ret):
         sp.call(['rm', '-rf', TDIR])
         return ret
-
-    def fixup(self, cflags, result):
-        return result.replace("readlink", """memset
-            :  | 
-   9.814 us :  +-(1) readlink""")
 
     def sort(self, output):
         """ This function post-processes output of the test to be compared.

@@ -9,6 +9,7 @@ class TestCase(TestBase):
             [ 9874] | main() {
  142.145 us [ 9874] |   fork();
             [ 9874] |   waitpid() {
+            [ 9874] |     /* linux:sched-out */
  473.298 us [ 9875] |   } /* fork */
             [ 9875] |   execl() {
             [ 9875] | main() {
@@ -20,6 +21,7 @@ class TestCase(TestBase):
    2.828 us [ 9875] |     } /* b */
    3.658 us [ 9875] |   } /* a */
    7.713 us [ 9875] | } /* main */
+   2.512 ms [ 9874] |     /* linux:sched-in */
    2.515 ms [ 9874] |   } /* waitpid */
    2.708 ms [ 9874] | } /* main */
 

@@ -15,6 +15,8 @@ class TestCase(TestBase):
 {"ts":56466448731,"ph":"B","pid":32537,"name":"foo"},
 {"ts":56466448742,"ph":"B","pid":32537,"name":"bar"},
 {"ts":56466448743,"ph":"B","pid":32537,"name":"usleep"},
+{"ts":56466448992,"ph":"B","pid":32537,"name":"linux:schedule"},
+{"ts":56466450301,"ph":"E","pid":32537,"name":"linux:schedule"},
 {"ts":56466450823,"ph":"E","pid":32537,"name":"usleep"},
 {"ts":56466450827,"ph":"E","pid":32537,"name":"bar"},
 {"ts":56466450834,"ph":"E","pid":32537,"name":"foo"},

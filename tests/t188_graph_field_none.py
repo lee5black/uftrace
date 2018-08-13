@@ -21,6 +21,7 @@ class TestCase(TestBase):
  | 
  +-(1) bar
    (1) usleep
+   (1) linux:schedule
 
 """, sort='graph')
 

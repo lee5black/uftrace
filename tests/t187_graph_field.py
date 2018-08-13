@@ -21,7 +21,8 @@ class TestCase(TestBase):
    15.226 us   15.226 us  560e956bd7a0 :  | (6) loop
                                        :  | 
    10.094 ms   13.365 us  560e956bd802 :  +-(1) bar
-   10.081 ms   10.081 ms  560e956bd608 :    (1) usleep
+   10.081 ms   12.982 us  560e956bd608 :    (1) usleep
+   10.068 ms   10.068 ms         30d43 :    (1) linux:schedule
 """, sort='graph')
 
     def pre(self):

@@ -11,7 +11,9 @@ class TestCase(TestBase):
             [18219] |   foo() {
    1.866 us [18219] |     mem_alloc();
             [18219] |     bar() {
-   2.093 ms [18219] |       usleep();
+            [18219] |       usleep() {
+   2.090 ms [18219] |         /* linux:schedule */
+   2.093 ms [18219] |       } /* usleep */
    2.095 ms [18219] |     } /* bar */
    2.106 ms [18219] |   } /* foo */
    2.107 ms [18219] | } /* main */
